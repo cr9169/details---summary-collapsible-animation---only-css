@@ -1,0 +1,121 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  min-width: 0;
+  margin: 0;
+}
+
+:root {
+  /* allows you to enable animations and transitions between
+  a <length-percentage> value and an intrinsic size
+  value such as auto, fit-content, or max-content */
+  interpolate-size: allow-keywords;
+}
+
+html,
+body {
+  height: 100%;
+  background: hsl(191, 53%, 76%);
+  color: hsl(240, 4%, 95%);
+}
+
+body {
+  width: 100%;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: cursive;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+.main-page-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.main-page-section > h1 {
+  margin-bottom: 2rem;
+}
+
+details {
+  width: 40%;
+  background: hsl(190, 75%, 39%);
+  border-radius: 0.5rem;
+  padding-block: 0.5rem;
+  padding-inline: 0.75rem;
+}
+
+details > p {
+  padding-block: 0.5rem;
+  overflow: hidden;
+}
+
+/* avaliable - chrome 131 - 133 in the moment */
+details::details-content {
+  /* block size is the height (like padding-block is 
+  padding up and down) */
+  block-size: 0;
+}
+
+details[open]::details-content {
+  block-size: auto;
+  transition: block-size 1s content-visibility 1s;
+
+  /*
+  Allows you to control how transitions are applied to properties that have "discrete" animation behavior
+  (they don't realy animate) such as display or visibility.
+
+  Discrete animation behavior refers to the way certain CSS properties transition between values in a non-continuous manner.
+  Unlike properties that can smoothly interpolate between two
+  values (such as opacity or color), properties with discrete
+  behavior "jump" directly from one state to another at a specific point in the animation timeline. These properties don't have any "in-between" states; they switch 
+  directly from one value to another without gradual transitions.
+
+  Examples of Discrete Properties
+  Common properties with discrete behavior include:
+
+  - display (e.g., none to block)
+  - visibility (e.g., visible to hidden)
+  - content (when used with ::before or ::after pseudo-elements)*/
+  transition-behavior: allow-discrete;
+}
+
+summary {
+  font-weight: bold;
+  /* list-style-position: outside; */
+}
+
+summary::marker {
+  color: hsl(191, 53%, 76%);
+}
+
+/* background: hsl(240, 4%, 95%); */
